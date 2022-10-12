@@ -17,7 +17,8 @@ public partial class MainForm : Form
     {
         InitializeComponent();
         _movieDataBase = new();
-        _movieDataBase = JsonSerializer.Deserialize<List<string>>(File.ReadAllText("MovieDataBase.json"))!;
+        if (File.Exists("MovieDataBase.json"))
+            _movieDataBase = JsonSerializer.Deserialize<List<string>>(File.ReadAllText("MovieDataBase.json"))!;
         _filters = new();
     }
 
